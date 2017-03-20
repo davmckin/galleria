@@ -3,6 +3,7 @@ class PhotosController < ApplicationController
   before_action :is_owner, only: [:destroy]
 
   def show
+    @photo = @album.photos.find(params[:id])
   end
 
   def new
@@ -10,10 +11,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @album = Album.find(params[:album_id])
-    @photo = @album.user.photos.new(photo_params)
+    @photo = @album.photos.new(photo_params)
     if @photo.save
-      @album.photos << @photo
       redirect_to @album
     else
       render :new
@@ -23,7 +22,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:caption, :url)
+    params.require(:photo).permit(:caption, :file)
   end
 
   def is_owner

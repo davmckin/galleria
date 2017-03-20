@@ -47,7 +47,7 @@
                             </li>
                             <% if current_user %>
                             <li><%= link_to "Logout!", logout_path, method: :delete, class: "btn" %></li>
-                            <li><%= link_to "Add Photo!", new_photo_path, class: "btn" %></li>
+                            <li><%= link_to "Add Photo!", new_album_photo_path(current_user.albums), class: "btn" %></li>
                             <li><%= link_to "About!", about_path, class: "btn" %></li>
                         <% else %>
                             <li><%= link_to "Login!", login_path, class: "btn" %></li>

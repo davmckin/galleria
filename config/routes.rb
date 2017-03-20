@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :users do
-    resources :albums do
-      resources :photos
-    end
+  resources :users
+  resources :albums do
+    resources :photos
   end
 
-  resources :albums
-  resources :photos
+
+
 
   root 'albums#index'
 
