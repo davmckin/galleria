@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :albums
+  resources :photos
+
   root 'albums#index'
 
   get "/login" => 'session#new', as: :login

@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <div class="col-md-3 col-sm-6">
+    <%= link_to user.username, class: "btn btn-default" %>
+  </div>
+<% end %>

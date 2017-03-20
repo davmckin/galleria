@@ -1,8 +1,11 @@
 class PhotosController < ApplicationController
-  def show; end
+  before_action :require_user, only: [:new, :create, :destroy]
+  before_action :is_owner, only: [:destroy]
+
+  def show
+  end
 
   def new
-    @album = Album.find(params[:album_id])
     @photo = Photo.new
   end
 
@@ -22,4 +25,14 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:caption, :url)
   end
+
+  def is_owner
+   @photo = current_user.photo.find_by(id: params[:id])
+   unless @photo && @photo.user == current_user
+     flash[:danger] = "You can't do that."
+     redirect_to :root
+   end
+  end
+
+
 end
