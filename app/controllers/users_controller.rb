@@ -6,7 +6,7 @@ def index
 end
 
 def show
-  @galleries = @user.galleries
+  @albums = @user.albums
 end
 
 def new

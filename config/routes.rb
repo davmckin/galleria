@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   root 'albums#index'
 
-  get "/login" => 'sessions#new', as: :login
- post "/login" => 'sessions#create'
- delete "/logout" => 'sessions#destroy', as: :logout
- get '/marketing' => 'albums#marketing', as: :marketing
+  get "/login" => 'session#new', as: :login
+ post "/login" => 'session#create'
+ delete "/logout" => 'session#destroy', as: :logout
+ get '/about' => 'albums#about', as: :about
 
 end

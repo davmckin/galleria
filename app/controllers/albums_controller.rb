@@ -4,10 +4,10 @@ before_action :require_user, only: [:new, :create]
 before_action :redirect_if_logged_out, only: [:index]
 
 def redirect_if_logged_out
-  redirect_to marketing_path if current_user.blank?
+  redirect_to about_path if current_user.blank?
 end
 
-def marketing
+def about
 
 end
 
